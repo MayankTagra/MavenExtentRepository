@@ -58,6 +58,7 @@
 </dependency>
   </dependencies>
    <build>
+   <defaultGoal>test</defaultGoal>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -66,7 +67,7 @@
           <version>3.0.0-M3</version>
           <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testng.xml</suiteXmlFile>
+            <suiteXmlFile>testng2.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
         </plugin>
