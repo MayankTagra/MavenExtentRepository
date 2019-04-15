@@ -6,6 +6,11 @@
 																																					
       <class name="HomePage.BaseTest"/>
       <class name="HomePage.Header"/>
+      <class name="HomePage.Footer"/>
+      <class name="Products.Products"/>
+      <class name="CustomerSuccess.Filter"/>
+      <class name="CustomerSuccess.SortBy"/>
+      <class name="Events.EventManagement"/>
     
       
     </classes>
