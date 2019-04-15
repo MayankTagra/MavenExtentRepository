@@ -7,7 +7,7 @@
       <class name="HomePage.BaseTest"/>
       <class name="HomePage.Footer"/>
       <class name="HomePage.Header"/>
-      <class name="CustomerSuccess.Filter"/>
+      <class name="CustomerSuccess.FilterBy"/>
       <class name="CustomerSuccess.SortBy"/>
       <class name="Events.EventManagement"/>
       <class name="HomePage.MidContent"/>
