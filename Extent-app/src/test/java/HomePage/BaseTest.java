@@ -44,7 +44,8 @@ public class BaseTest{
 	{
 
 		if(result.getStatus()==ITestResult.FAILURE)
-		{
+		{	
+			String screenShotPath=CaptureScreenS.capture(driver, "screenShotName");
 			test.log(Status.FAIL, MarkupHelper.createLabel(result.getName()+"Test case Failed ue to following reason", ExtentColor.RED));
 			test.fail(result.getThrowable());
 		}

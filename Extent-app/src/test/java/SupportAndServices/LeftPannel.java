@@ -148,7 +148,8 @@ public class LeftPannel extends BaseTest {
 	}
 	@Test(enabled=true)
 	public void TopicsSelectAll() throws InterruptedException
-	{
+	{	
+		test=extent.createTest("Topics Select All");
 		WebDriver driver=Login();
 		driver.get("https://help.salesforce.com/search?sfContext#q=live%20agent&f:@sflanguage=%5Ben_US%5D&firstQueryMeta=%5Bobject%20Object%5D");
 		Thread.sleep(4500);
@@ -185,34 +186,7 @@ public class LeftPannel extends BaseTest {
 		
 		
 	}
-	@Test()
-	public void SelectRandom() throws InterruptedException
-	{	
-		test=extent.createTest("Select Random");
-		WebDriver driver=Login();
-		driver.get("https://help.salesforce.com/search?sfContext#q=live%20agent&f:@sflanguage=%5Ben_US%5D&firstQueryMeta=%5Bobject%20Object%5D");
-		Thread.sleep(4500);
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("window.scrollBy(0,500)");
-		
-		driver.findElement(By.xpath("//div[@id='TopicFacet']//li[@data-value='Search']//div[@class='coveo-facet-value-checkbox']")).click();
-		
-		Thread.sleep(4500);
-		
-		Actions builder=new Actions(driver);
-		builder.moveToElement(driver.findElement(By.xpath("//ul[@class='coveo-facet-search-results']"))).sendKeys(Keys.ARROW_DOWN)
-		.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
-		
-		Thread.sleep(3200);
-		driver.findElement(By.xpath("//div[@id='TopicFacet']//li[@data-value='Search']//div[@class='coveo-facet-value-checkbox']")).click();
-		Thread.sleep(3100);
-		builder.moveToElement(driver.findElement(By.xpath("//ul[@class='coveo-facet-search-results']")))
-		.sendKeys(Keys.ENTER).build().perform();
-		Thread.sleep(4500);
-		driver.close();
-		
-			
-	}
+
 	
 	@Test()
 	public void SelectAllLangugaes() throws InterruptedException
