@@ -1,7 +1,5 @@
 package SupportAndServices;
 
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -12,7 +10,7 @@ import org.testng.annotations.Test;
 
 import HomePage.BaseTest;
 
-public class LeftPannel extends BaseTest {
+public class LeftPan extends BaseTest{
 	@Test()
 	public void ContentType() throws InterruptedException
 	{	
