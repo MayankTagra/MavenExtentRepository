@@ -194,57 +194,54 @@ public class LeftPan extends BaseTest{
 		test=extent.createTest("Select All Languages");
 		WebDriver driver=Login();
 		
-	driver.get("https://help.salesforce.com/search?sfContext#q=live%20agent&f:@sflanguage=%5Ben_US%5D&firstQueryMeta=%5Bobject%20Object%5D");
-	Thread.sleep(3400);
-	JavascriptExecutor js=(JavascriptExecutor)driver;
-	js.executeScript("window.scrollBy(0,500)");
-	WebDriverWait wait=new WebDriverWait(driver,230);
-	
-	//The xpath folllowing //div[@id='LanguageFacet']//ul//li[2]
-	
-
-	Thread.sleep(3400);
-	for(int i=0;i<4;i++)
-	{
-		try
+		driver.get("https://help.salesforce.com/search?sfContext#q=live%20agent&f:@sflanguage=%5Ben_US%5D&firstQueryMeta=%5Bobject%20Object%5D");
+		Thread.sleep(3400);
+		
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,500)");
+		Thread.sleep(3400);
+		
+		Actions builder=new Actions(driver);
+		
+		for(int i=0;i<4;i++)
+		{	try
 		{
 			driver.findElement(By.xpath("//div[@id='LanguageFacet']//div[@class='coveo-facet-more coveo-active']")).click();
-			js.executeScript("window.scrollBy(0,200)");
-			//.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='LanguageFacet']//div[@class='coveo-facet-more coveo-active']")));
 			Thread.sleep(3400);
-			
+			js.executeScript("window.scrollBy(0,200)");
 		}
 		catch(Exception e)
 		{
-			System.out.println("No More Expansion");
+			System.out.println("No more Expansion");
 		}
-	}
-	js.executeScript("window.scrollBy(0,-400)");	
-	Thread.sleep(4500);
-
-	for(int i=1;i<=18;i++)
-	{
-		driver.findElement(By.xpath("//div[@id='LanguageFacet']//ul//li["+i+"]")).click();
-		js.executeScript("window.scrollBy(0,30)");
+			
+		}
+		js.executeScript("window.scrollBy(0,-400)");
+		int count=driver.findElement(By.xpath("//div[@id='LanguageFacet']//ul[@class='coveo-facet-values']"))
+				.findElements(By.tagName("li")).size();
+		for(int i=1;i<=count;i++)
+		{
+			driver.findElement(By.xpath("//div[@id='LanguageFacet']//ul[@class='coveo-facet-values']//li["+i+"]")).click();
+			Thread.sleep(4500);
+			js.executeScript("window.scrollBy(0,20)");
+			
+		}
+		for(int i=count;i>0;i--)
+		{
+			//driver.findElement(By.xpath("//div[@id='LanguageFacet']//ul[@class='coveo-facet-values']//li["+i+"]//div[@class='coveo-facet-value-exclude']"))
+			builder.moveToElement(driver.findElement(By.xpath("//div[@id='LanguageFacet']//ul[@class='coveo-facet-values']//li["+i+"]//div[@class='coveo-facet-value-exclude']")))
+			.click().build().perform();
+			
+			js.executeScript("window.scrollBy(0,-20)");
+			
+			Thread.sleep(3400);
+			
+		}
+		Thread.sleep(4500);
+		System.out.println("Finally All Unclicked");
 		
 		
-		
-	}
-	System.out.println("Finally All clicked");
-	Actions builder=new Actions(driver);
-	Thread.sleep(2300);
-	for(int i=18;i>0;i--)
-	{
-		driver.findElement(By.xpath("//div[@id='LanguageFacet']//ul[@class='coveo-facet-values']//li["+i+"]//div[@class='coveo-facet-value-exclude']"))
-		.click();
-		builder.moveToElement(driver.findElement(By.xpath("//div[@id='LanguageFacet']//ul[@class='coveo-facet-values']//li["+i+"]//div[@class='coveo-facet-value-exclude']")))
-		.click().build().perform();
-		js.executeScript("window.scrollBy(0,-30)");
-		Thread.sleep(2300);
-		
-	}
-	System.out.println("Finally All Unclicked");
-	driver.close();
+		driver.close();
 		
 		
 		
